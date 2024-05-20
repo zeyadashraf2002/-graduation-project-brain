@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Submit Image URL for Prediction</h2>
+<form id="predictForm">
+  Enter image URL:
+  <input type="text" id="imageUrl" name="file">
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+document.getElementById('predictForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var imageUrl = document.getElementById('imageUrl').value;
+
+  fetch('http://localhost:8000/predict', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify([{ file: imageUrl }])
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Create a new window and write the response data into it
+    var newWindow = window.open("");
+    newWindow.document.write("<h1>Prediction Result</h1>");
+    newWindow.document.write("<p>" + JSON.stringify(data) + "</p>");
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+</script>
+
+</body>
+</html>
