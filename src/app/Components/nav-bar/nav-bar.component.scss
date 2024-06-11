@@ -1,0 +1,128 @@
+.maincolor {
+    color: #1A998E;
+}
+
+// #my-nav{
+//     position: fixed;
+//     width: 100%;
+// }
+.myNav {
+    background-color: #1A998E;
+    color: #FFFFFF;
+}
+
+#heading-home {
+    color: #1A998E;
+}
+
+#imgLogo {
+    margin-right: 8px;
+    width: 15%;
+    //height: 64px;
+
+}
+
+#textLogo {
+    //position: relative;
+    max-width: 50%;
+    //height: 28px;
+    //left: 0px;
+    //top: 14px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+}
+
+.boxSearch {
+    width: 250px;
+    height: 50px;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    display: flex;
+    padding: 10px;
+    margin-right: 50px;
+}
+
+.boxSearch>#search-button {
+    border: none;
+    background-color: transparent;
+}
+
+.boxSearch>i {
+    font-size: 20px;
+    color: #1A998E;
+    padding-top: 7px;
+    padding-left: 15px;
+
+}
+
+.boxSearch>input {
+    flex: 1;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.sidebar {
+    position: absolute;
+    top: 4.125rem;
+    right: 27rem;
+    //width: 253;
+    //border: 2px solid #1A998E;
+}
+
+.signup-btn {
+    margin-right: 120px;
+    padding: 1rem;
+    color: #1A998E;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);
+    font-weight: 400;
+    border-radius: 15px;
+    font-size: 24px;
+    font-style: bolder;
+    background: #FFFFFF;
+}
+
+.signup-btn:hover {
+    color: #000;
+    background: rgba(218, 255, 252, 1);
+}
+
+.loginbtn {
+    margin-right: 120px;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);
+    font-weight: 400;
+    border-radius: 15px;
+    font-size: 24px;
+    font-style: bolder;
+    color: #1A998E;
+    background: #FFFFFF;
+
+}
+
+.loginbtn:hover {
+    color: #000;
+    background: rgba(218, 255, 252, 1);
+}
+
+.logout-btn {
+    width: 100%;
+    border: none;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    color: #1A998E;
+
+}
+
+.logout-btn:hover {
+    background-color: #DBDBDB;
+}

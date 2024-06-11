@@ -1,0 +1,304 @@
+<div class="m-auto">
+  <mat-progress-spinner class="m-auto" mode="indeterminate" *ngIf="IsWait">
+  </mat-progress-spinner>
+</div>
+<div *ngIf="!IsWait" class="container">
+  <div class="row my-5 py-4">
+    <div class="col-md-12 text-center">
+      <h1 class="headColor fw-bolder m-auto py-5">Profile</h1>
+      <div class="member m-auto">
+        <img
+          class="w-25"
+          src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM="
+          alt="docProfile"
+        />
+        <div class="memberCaption text-center">
+          <p>Upload your photo</p>
+          <input
+            class="file-btn"
+            type="file"
+            name="image"
+            ng2FileSelect
+            [uploader]="uploader"
+            accept="image/x-png,image/gif,image/jpeg"
+          />
+        </div>
+      </div>
+
+      <button
+        *ngIf="isUploaded == true"
+        class="upload-btn"
+        type="button"
+        (click)="uploader.uploadAll()"
+        [disabled]="!uploader.getNotUploadedItems().length"
+      >
+        Upload
+      </button>
+    </div>
+  </div>
+  <form
+    [formGroup]="editProfileDoctor"
+    (ngSubmit)="editProfDoc(editProfileDoctor)"
+  >
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="headColor fw-bolder">First Name</h4>
+        <input
+          formControlName="firstName"
+          type="text"
+          [value]="docProfileData?.firstName"
+          class="Pinfo"
+        />
+        <!-- <p class="Pinfo ">{{docProfileData?.firstName}}</p> -->
+      </div>
+      <div class="col-md-6">
+        <h4 class="headColor fw-bolder">Last Name</h4>
+        <input
+          formControlName="lastName"
+          type="text"
+          [value]="docProfileData?.lastName"
+          class="Pinfo"
+        />
+        <!-- <p class="Pinfo"> {{docProfileData?.lastName}} </p> -->
+      </div>
+      <div class="col-md-6">
+        <h4 class="headColor fw-bolder">E-mail</h4>
+        <input
+          formControlName="email"
+          type="text"
+          [value]="docProfileData?.email"
+          class="Pinfo"
+        />
+        <!-- <p class="Pinfo "> {{docProfileData?.email}}</p> -->
+      </div>
+      <div class="col-md-6">
+        <h4 class="headColor fw-bolder">Address</h4>
+        <input
+          formControlName="address"
+          type="text"
+          [value]="docProfileData?.address"
+          class="Pinfo"
+        />
+        <!-- <p class="Pinfo">{{docProfileData?.address}} </p> -->
+      </div>
+      <div class="col-md-6">
+        <h4 class="headColor fw-bolder">Phone Number</h4>
+        <input
+          formControlName="phone"
+          type="text"
+          [value]="docProfileData?.phone"
+          class="Pinfo"
+        />
+      </div>
+      <div class="col-md-6">
+        <h4 class="headColor fw-bolder">clinicAddress</h4>
+        <input
+          formControlName="clinicAddress"
+          type="text"
+          [value]="docProfileData?.clinicAddress"
+          class="Pinfo"
+        />
+        <p class="Pinfo">{{ docProfileData?.clinicAddress }}</p>
+      </div>
+      <div class="d-flex justify-content-end">
+        <!-- <input class="cancel-btn" type="button" value="Cancle" (click)="backHome()"> -->
+        <input type="submit" class="edit-btn" type="submit" value="Save" />
+      </div>
+    </div>
+  </form>
+</div>
+<!-- <div class="container">
+  <div class="row">
+    <h3 class="headColor text-center py-5">Add appointments</h3>
+    <section class="appointInfo">
+      <form
+        [formGroup]="editAppointDoctor"
+        (ngSubmit)="submit(editAppointDoctor)"
+      >
+        <div class="row">
+          <div class="col-md-6 py-3">
+            <mat-datepicker-toggle
+              class="headColor"
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-form-field class="w-50">
+              <mat-label class="headColor"> Date/Day</mat-label>
+              <input
+                class="headColor appt"
+                formControlName="availableDate"
+                matInput
+                [matDatepicker]="picker"
+                [value]="date.value"
+              />
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button  class="btn btn-success ms-4 fs-4 fw-bolder"> + </button>
+          </div>
+          <div class="col-md-6 py-3">
+            <i class="fa-clock"></i>
+            <label for="appt" class="Pinfo"> from </label>
+            <input
+              type="time"
+              formControlName="from"
+              class="appt"
+              name="appt"
+              min="09:00"
+              max="18:00"
+              required
+            />
+            <button  class="btn btn-success ms-2 fs-4 fw-bolder"> + </button>
+            <i class="fa-clock"></i>
+            <label for="appt" class="Pinfo"> to </label>
+            <input
+              type="time"
+              formControlName="to"
+              class="appt"
+              name="appt"
+              min="09:00"
+              max="18:00"
+              required
+            />
+          </div>
+
+          <button  class="btn btn-success ms-2 fs-4 fw-bolder"> + </button>
+        </div>
+        <div class="d-flex justify-content-end">
+          {{time+' - '+secTime}}
+          <input class="cancel-btn" type="button" value="Cancle" (click)="backHome()">
+          <input class="edit-btn" type="submit" value="Save" />
+        </div>
+      </form>
+    </section>
+  </div>
+</div> -->
+<!-- <div class="display-3">
+{{editAppointDoctor.value.availableDates| date:'short' }}
+{{editAppointDoctor.value| json }}
+</div>   -->
+
+<!-- <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker ></mat-datepicker>
+  </mat-form-field> -->
+<!-- <div class="container">
+    <div class="row py-1">
+        <div class="col-md-3 ">
+            <div class="member">
+                <img class="w-100 " [src]="docProfileData?.Image?.path" alt="docProfile">
+                <div class="memberCaption">
+                    <p> Upload your photo</p>
+                    <input class="file-btn" type="file" name="image" ng2FileSelect [uploader]="uploader"
+                        accept="image/x-png,image/gif,image/jpeg" />
+                </div>
+            </div>
+ 
+            <button class="upload-btn" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                Upload
+            </button>
+        </div>
+
+        <div class=" offset-1 col-md-6 py-3"> 
+            <div class="py-2">
+                <h3 for="text" class="headColor">firstName</h3>
+                <div class=" w-50 ">
+                    <input class="myinp fs-4" [value]="docProfileData?.firstName"formControlName="firstName" placeholder="enter your">
+                </div>
+            </div>
+            <div class="py-2">
+                <h3 for="text" class="headColor">lastName</h3>
+                <div class=" w-50 ">
+                    <input class="myinp fs-4" [value]="docProfileData?.lastName"formControlName="lastName" placeholder="enter your">
+                </div>
+            </div>  
+            <div class="py-2">
+                <h3 for="text" class="headColor py-2"> Location </h3>
+                <select  formControlName="address"class="myinp form-select form-select-lg mb-3 w-50" aria-label=".form-select-lg example">
+                    <option [value]="docProfileData?.address">{{docProfileData?.address}}</option>
+                    <option value="Fayoum">Fayoum</option>
+                    <option value="Cairo">Cairo</option>
+                    <option value="Alex">Alex</option>
+                </select>
+            </div>
+            <div class="py-2">
+                <h3 for="text" class="headColor">Clinical address</h3>
+                <div class=" w-50">
+                    <textarea cols="27" rows="2" class="myinp fs-4" [value]="">
+                        </textarea>
+                </div>
+            </div>
+            <div class="py-2">
+                <h3 for="text" class="headColor"> Phone </h3>
+                <div class=" w-50">
+                    <input class="myinp fs-4" type="text" placeholder="Write your Phone No.">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <div class="row py-3">
+            
+        <h3 class="headColor text-center py-5"> Add appointments</h3>
+            <div class="col-md-6 py-3">
+                <mat-datepicker-toggle class="headColor" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-form-field class="w-50">
+                    <mat-label class="headColor"> Date/Day</mat-label>
+                    <input class="headColor appt " matInput [matDatepicker]="picker" [value]="date.value">
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 py-3">
+                <i class="fa-regular fa-clock"></i>
+                <label for="appt" class="Pinfo"> At </label>
+                <input type="time" class="appt" name="appt" min="09:00" max="18:00" required>
+            </div>
+
+        </div>
+
+
+    
+</div> -->
+
+<!-- <div class="display-3">
+    {{profileDoctor.value|json}}
+</div> -->
+
+<!-- <div class="  col-md-3 py-5">
+    <button class="edit-btn" type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+        Upload
+    </button>
+</div> -->
+
+<!-- <div class="row">
+
+    <div class="col-md-5 form-group mb-3 mx-4">
+      <label class="form-label fs-4 fw-bolder">First name</label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Enter your first name</mat-label>
+        <input matInput
+          [class.is-invalid]="signupForm.get('firstName')?.invalid == true  && signupForm.get('firstName')?.touched == true"
+          type="text" formControlName="firstName">
+      </mat-form-field>
+
+      <span *ngIf='signupForm.get("firstName")?.invalid == true  && signupForm.get("firstName")?.touched == true'
+        class="bgFont d-block text-danger">firstName not Valid</span>
+    </div>
+
+    <div class="col-md-5 mb-3 form-group mx-4">
+      <label class="form-label fs-4 fw-bolder">Last name</label>
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Enter your last name</mat-label>
+        <input matInput
+          [class.is-invalid]="signupForm.get('lastName')?.invalid == true  && signupForm.get('lastName')?.touched == true"
+          type="text" formControlName="lastName">
+      </mat-form-field>
+      <span *ngIf='signupForm.get("lastName")?.invalid == true  && signupForm.get("lastName")?.touched == true'
+        class="bgFont d-block text-danger">lastname not Valid</span>
+    </div>
+  </div> -->

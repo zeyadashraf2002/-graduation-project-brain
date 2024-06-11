@@ -1,0 +1,45 @@
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
+
+//
+$font:'Poppins', sans-serif;
+body{
+    font-family:$font ;
+    background-image: linear-gradient(to top, rgba(26, 153, 142, 0.12) ,
+    rgba(238, 108, 225, 0.0331771), rgba(255, 255, 255, 0) ) !important;
+    height: 100%;
+}
+
+#iconProfile{
+    font-size: 45px;
+    padding-left: 15px;
+    color: #C7C7C7;
+    
+}
+#imgLogo
+{
+    margin-right: 8px;
+    width: 64px;
+    height: 64px;
+   
+}
+#textLogo{
+    position: relative;
+    width: 365px;
+    height: 28px;
+    left: 0px;
+    top: 14px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #1A998E; 
+}
