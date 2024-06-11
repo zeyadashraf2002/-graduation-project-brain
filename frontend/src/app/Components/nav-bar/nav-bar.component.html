@@ -1,0 +1,197 @@
+<nav id="my-nav" class="navbar navbar-expand-lg myNav navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" (click)="navForHome()">
+      <div class="nav-item d-flex">
+        <img id="imgLogo" src="assets/home/logo.png" alt="logo" />
+        <p
+          id="textLogo"
+          (click)="navForHome()"
+          class="nav-brand text-decoration-none"
+        >
+          Brain tumor detection
+        </p>
+      </div>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            (click)="navForHome()"
+            routerLinkActive="active"
+            >Home</a
+          >
+        </li>
+        <li *ngIf="isDoctor == false" class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Services
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/upload"
+                routerLinkActive="active"
+              >
+                Scan
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="#"> Book </a></li>
+            <!-- <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About brain tumors</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div *ngIf="isDoctor == false" class="navbar-nav ms-auto mt-5 mt-lg-0">
+          <div class="nav-item">
+            <div class="boxSearch">
+              <button
+                id="search-button"
+                (click)="searchDoc(info.value)"
+                type="submit"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+              <input
+                class="form-control ms-sm-4 rounded-5"
+                aria-label="Search"
+                type="search"
+                id="searchProduct"
+                #info
+                [(ngModel)]="searchBoxTxt"
+                (keyup.enetr)="searchDoc(info.value)"
+                type="text"
+                placeholder="Find a Doctor"
+              />
+            </div>
+          </div>
+          <div class="resultSearch">
+            <div
+              *ngIf="!searchErr && searchBoxTxt != ''"
+              class="list-group sidebar"
+            >
+              <li
+                *ngFor="let res of searchResult"
+                class="list-group-item"
+                (click)="openDocProfile(res._id)"
+              >
+                {{ res.firstName + " " + res.lastName }}
+              </li>
+              <p *ngIf="searchErr" class="alert alert-danger">
+                {{ searchErr.error.message }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <a class="nav-item" (click)="getProfileDoc()">
+          <i class="fa fa-user-circle-o fs-1 mx-5 my-1 text-light"></i>
+        </a>
+        <button (click)="logOut()" class="btn loginbtn mx-5 rounded-4">
+          <i class="fa fa-sign-out p-2"></i>
+          Log Out
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Old Design 
+    
+    <div class="container-fluid">
+    <nav class="navbar navbar-expand-xs navbar-light bg-light p-2">
+         <div class="nav-item p-2">
+            <img class="w-10  " id="imgLogo" src="assets/home/logo.png" alt="logo">
+            <a id="textLogo" class="nav-brand text-decoration-none">Brain tumor detection</a>
+        </div> 
+         <div *ngIf="isDoctor==false" class="navbar-nav  ms-auto mt-5 mt-lg-0">
+            <div class="nav-item">
+                <div class="boxSearch">
+                    <i class="fa fa-search"></i>
+                    <input class="form-control ms-sm-4 rounded-5" id="searchProduct" #info [(ngModel)]="searchBoxTxt"
+                        (keyup.enetr)="searchDoc(info.value)" type="text" placeholder="Find a Doctor">
+                </div>
+            </div>
+            <div class="resultSearch">
+                <div *ngIf="!searchErr &&searchBoxTxt!=''" class="list-group sidebar">
+                    <li *ngFor="let res of searchResult" class="list-group-item" (click)="openDocProfile(res._id)">
+                        {{res.firstName +' '+ res.lastName}}
+                    </li>
+                    <p *ngIf="searchErr" class="alert alert-danger">{{searchErr.error.message}}</p>
+                </div>
+            </div>
+        </div> 
+
+
+         <div class="sidebar-contain nav-item">
+            <button class="fs-5" mat-icon-button [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu">
+                <mat-icon>reorder</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+
+                 <div *ngIf="errRespon">
+                    <p mat-stroked-button (click)="openSnackBar()"></p>
+                </div> -
+                 <h3 id="h-sidebar" class="p-2 "> Welcome darling</h3>
+
+                <button *ngIf="isDoctor==true" mat-menu-item (click)="getProfileDoc()">
+                    <i class="fa fa-user-circle-o maincolor fs-3 p-2"></i>
+                    <span> View Profile</span>
+                </button>
+
+                <button mat-menu-item (click)="logout()">
+                    <i class="fa fa-sign-out fs-3 p-2"></i>
+                    <span> Log out</span>
+                </button>
+            </mat-menu>  
+
+             <div class="sidebar bg-light ">
+                <ul id="collap" class=" navbar-nav collapse navbar-collapse">
+                    <li class="nav-item py-5">
+                        <h3 id="h-sidebar" class="fw-bolder fs-3 "> Welcome user</h3>
+                    </li>
+                    <button *ngIf="isbtnDoc==true" class="btn logout-btn py-4" (click)="getProfileDoc()"><i
+                            class="fa fa-user-circle-o maincolor fs-3 p-2"></i>View profile</button>
+                    <button class="btn logout-btn py-4" (click)="logout()"><i class="fa fa-sign-out fs-3 p-2"></i> Log
+                        out</button>
+                </ul>
+            </div> 
+        </div>
+    </nav>
+</div> 
+
+
+ <div *ngFor="let res of searchResult" class="list-group">
+    <a *ngIf="!searchErr" class="list-group-item  alert list-group-item-action py-2"
+        (click)="openDocProfile(res._id)">{{res.firstName +' '+ res.lastName}}
+    </a>
+    <p *ngIf="searchErr" class="alert alert-danger">{{searchErr.error.message}}</p>
+</div>  -->

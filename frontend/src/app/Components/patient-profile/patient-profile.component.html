@@ -1,0 +1,111 @@
+<header class="container py-5">
+  <div class="container">
+    <div class="row align-items-center p-4">
+      <section
+        [ngStyle]="{
+          background: 'url(' + backgroundUrl + ') no-repeat 0 0 / cover'
+        }"
+        class="patient-profile p-3"
+      >
+        <div class="text-center py-4">
+          <h3 class="fw-bolder headColor fs-1">Profile</h3>
+          <img src="assets/patient/Account.png" alt="account" />
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="headColor fw-bolder">First Name</h4>
+            <span class="bg-light">
+              <p class="Pinfo">{{ dataPatient?.firstName }}</p>
+            </span>
+          </div>
+          <div class="col-md-4 offset-2">
+            <h4 class="headColor fw-bolder">Last Name</h4>
+            <span class="bg-light">
+              <p class="Pinfo">{{ dataPatient?.lastName }}</p>
+            </span>
+          </div>
+        </div>
+        <div class="row py-4">
+          <div class="col-md-6">
+            <h4 class="headColor fw-bolder">Email</h4>
+            <span class="bg-light">
+              <p class="Pinfo">{{ dataPatient?.email }}</p>
+            </span>
+          </div>
+          <div class="col-md-4 offset-2">
+            <h4 class="headColor fw-bolder">Address</h4>
+            <span class="bg-light">
+              <p class="Pinfo">{{ dataPatient?.address }}</p>
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <h4 class="headColor fw-bolder text-center">Appointments' Info</h4>
+    <section class="appointInfo">
+      <div class="row py-4">
+        <div class="col-md-6">
+          <h4 class="headColor fw-bolder">Time & Date</h4>
+          <span class="bg-light">
+            <p class="Pinfo">
+              {{ dataAppoint?.Date + " At " + dataAppoint?.Time }}
+            </p>
+          </span>
+        </div>
+        <div class="col-md-4 offset-2">
+          <h4 class="headColor fw-bolder">Doctor’s Name</h4>
+          <span class="bg-light">
+            <p class="Pinfo">
+              {{
+                dataAppoint?.doctorId?.firstName +
+                  " " +
+                  dataAppoint?.doctorId?.lastName
+              }}
+            </p>
+          </span>
+        </div>
+      </div>
+      <div class="text-center">
+        <img
+          class="w-25"
+          [src]="dataPatient.images[0]"
+          alt="brianscans"
+          srcset=""
+        />
+      </div>
+      <h4 class="headColor fw-bolder">Notes</h4>
+      <div>
+        <button
+          class="toggle-btn"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="noteInfo"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- 
+<button class="toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+aria-expanded="false" aria-controls="collapseExample">
+<i class="fa fa-plus"></i>
+</button>
+
+<div class="collapse" id="collapseExample">
+<div class="form-outline">
+    <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+</div>
+<button class="btn btn-success my-3" type="submit">Save notes</button>
+</div> -->

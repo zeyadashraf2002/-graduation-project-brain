@@ -1,0 +1,354 @@
+<header
+  [ngStyle]="{ background: 'url(' + backgroundUrl + ') no-repeat 0 0 / cover' }"
+>
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-md-5">
+        <img src="assets/signup/amico.png" alt="" />
+      </div>
+      <div class="offset-1 col-md-6">
+        <div class="bg-light">
+          <div class="form-head p-3">
+            <h2 class="display-4 fw-bolder">Creat an Account</h2>
+            <p class="fw-bold fs-3">Sign up to continue</p>
+          </div>
+          <form [formGroup]="signupForm" (ngSubmit)="submit()">
+            <div class="signup-form">
+              <div class="row">
+                <div *ngIf="errMessage">
+                  <p mat-stroked-button (click)="openSnackBar()"></p>
+                  <!-- <p class="alert alert-danger w-100 text-center fw-bold"> {{errMessage.error.message}}</p> -->
+                </div>
+                <div class="col-md-5 form-group mb-2 mx-4">
+                  <!-- Start First Name  -->
+                  <label class="form-label fs-4 fw-bolder heading-signup"
+                    >First name</label
+                  >
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Enter your first name</mat-label>
+                    <input
+                      matInput
+                      [class.is-invalid]="
+                        signupForm.get('firstName')?.invalid == true &&
+                        signupForm.get('firstName')?.touched == true
+                      "
+                      type="text"
+                      formControlName="firstName"
+                    />
+                  </mat-form-field>
+                  <span
+                    *ngIf="
+                      signupForm.get('firstName')?.invalid == true &&
+                      signupForm.get('firstName')?.touched == true
+                    "
+                    class="bgFont d-block text-danger"
+                    >firstName not Valid</span
+                  >
+                </div>
+                <!--End First Name  -->
+
+                <!-- Start Last Name  -->
+                <div class="col-md-5 mb-2 form-group mx-4">
+                  <label class="form-label fs-4 fw-bolder heading-signup"
+                    >Last name</label
+                  >
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Enter your last name</mat-label>
+                    <input
+                      matInput
+                      [class.is-invalid]="
+                        signupForm.get('lastName')?.invalid == true &&
+                        signupForm.get('lastName')?.touched == true
+                      "
+                      type="text"
+                      formControlName="lastName"
+                    />
+                  </mat-form-field>
+                  <span
+                    *ngIf="
+                      signupForm.get('lastName')?.invalid == true &&
+                      signupForm.get('lastName')?.touched == true
+                    "
+                    class="bgFont d-block text-danger"
+                    >lastname not Valid
+                  </span>
+                </div>
+              </div>
+              <!-- End Last Name  -->
+
+              <!-- Start Address  -->
+              <div class="mb-2 px-4 form-group">
+                <label class="form-label fs-4 fw-bolder heading-signup"
+                  >Location</label
+                >
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Choose Your Location</mat-label>
+                  <mat-select formControlName="address">
+                    <mat-option value="Cairo">Cairo</mat-option>
+                    <mat-option value="Fayoum">Fayoum</mat-option>
+                    <mat-option value="Alex">Alex</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <!-- End Address  -->
+              <!-- <div *ngIf="signupForm.get('roleDoctor')?.value == true" class="row">
+                <div *ngIf="errMessage">
+                  <p mat-stroked-button (click)="openSnackBar()"></p>
+                   <p class="alert alert-danger w-100 text-center fw-bold"> {{errMessage.error.message}}</p> 
+                </div>
+                <div class="col-md-5 form-group mb-3 mx-4">
+                  <label class="form-label fs-4 fw-bolder heading-signup">Clinical address</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Enter your first name</mat-label>
+                    <input matInput
+                      [class.is-invalid]="signupForm.get('clinicAddress')?.invalid == true  && signupForm.get('clinicAddress')?.touched == true"
+                      type="text" formControlName="clinicAddress">
+                  </mat-form-field>
+                  <span
+                    *ngIf='signupForm.get("clinicAddress")?.invalid == true  && signupForm.get("clinicAddress")?.touched == true'
+                    class="bgFont d-block text-danger">clinicAddress not Valid</span>
+                </div>
+                <div class="col-md-5 mb-3 form-group mx-4">
+                  <label class="form-label fs-4 fw-bolder heading-signup">Phone Number</label>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Enter your phone number</mat-label>
+                    <input matInput
+                      [class.is-invalid]="signupForm.get('phone')?.invalid == true  && signupForm.get('phone')?.touched == true"
+                      type="text" formControlName="phone">
+                  </mat-form-field>
+                  <span *ngIf='signupForm.get("phone")?.invalid == true  && signupForm.get("phone")?.touched == true'
+                    class="bgFont d-block text-danger">phoneNo not Valid</span>
+                </div>
+              </div> -->
+              <!-- End phoneNo  -->
+              <!-- Start Email  -->
+              <div class="mb-2 px-4 form-group">
+                <label class="form-label fs-4 fw-bolder heading-signup"
+                  >Email</label
+                >
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Enter your email</mat-label>
+                  <input
+                    matInput
+                    placeholder="pat@example.com"
+                    [class.is-invalid]="
+                      signupForm.get('email')?.invalid == true &&
+                      signupForm.get('email')?.touched == true
+                    "
+                    type="email"
+                    formControlName="email"
+                  />
+                </mat-form-field>
+                <span
+                  *ngIf="
+                    signupForm.get('email')?.invalid == true &&
+                    signupForm.get('email')?.touched == true
+                  "
+                  class="bgFont d-block text-danger"
+                  >email not Valid</span
+                >
+              </div>
+              <!-- End Email  -->
+              <!-- Start Password  -->
+              <div class="mb-2 px-4 form-group">
+                <label class="form-label fs-4 fw-bolder heading-signup"
+                  >Password</label
+                >
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Enter your password</mat-label>
+                  <input
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    [class.is-invalid]="
+                      signupForm.get('password')?.invalid == true &&
+                      signupForm.get('password')?.touched == true
+                    "
+                    type="password"
+                    formControlName="password"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>{{
+                      hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <span
+                  *ngIf="
+                    signupForm.get('password')?.invalid == true &&
+                    signupForm.get('password')?.touched == true
+                  "
+                  class="bgFont d-block text-danger"
+                  >password not Valid</span
+                >
+              </div>
+              <!-- End Password  -->
+
+              <!-- Start C-Pass  -->
+              <div class="mb-1 px-4 form-group">
+                <label class="form-label fs-4 fw-bolder heading-signup"
+                  >Confirm your Password</label
+                >
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Confirm your password</mat-label>
+                  <input
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    [class.is-invalid]="
+                      signupForm.get('cPass')?.invalid == true &&
+                      signupForm.get('cPass')?.touched == true
+                    "
+                    type="password"
+                    formControlName="cPass"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>{{
+                      hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <span
+                  *ngIf="
+                    signupForm.get('cPass')?.invalid == true &&
+                    signupForm.get('cPass')?.touched == true
+                  "
+                  class="bgFont d-block text-danger"
+                  >password not Valid</span
+                >
+              </div>
+              <!-- End C-Pass  -->
+
+              <!-- Start Role Doctor -->
+              <div class="form-check form-switch mb-3">
+                <mat-slide-toggle
+                  [(ngModel)]="isDoctor"
+                  formControlName="type"
+                  color="primary"
+                ></mat-slide-toggle>
+                <label
+                  class="form-check-label fs-5"
+                  for="flexSwitchCheckChecked"
+                  >Enable it if you are a doctor</label
+                >
+              </div>
+              <!-- End Role Doctor  -->
+
+              <!-- Start Dates  -->
+              <ng-container *ngIf="isDoctor">
+                <div class="mb-1 px-4 form-group">
+                  <label class="form-label fs-4 fw-bolder heading-signup"
+                    >Available Dates</label
+                  >
+                  <mat-form-field class="w-100">
+                    <input
+                      matInput
+                      [matDatepicker]="picker"
+                      (dateInput)="addEvent($event)"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="mb-1 px-4 d-flex align-items-center flex-wrap">
+                  <div *ngFor="let date of selectedDates">
+                    <div class="d-flex align-items-start">
+                      <mat-chip color="primary" selected="true">{{
+                        date | date
+                      }}</mat-chip>
+                      <button
+                        mat-icon-button
+                        (click)="removeDate(date)"
+                        class="p-0 h-auto"
+                      >
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <!-- Start Dates  -->
+
+              <!-- Start Submit Form  -->
+              <div class="text-center p-2">
+                <button
+                  [disabled]="signupForm.invalid == true"
+                  type="submit"
+                  class="btn btn-lg login-btn rounded-2"
+                >
+                  Sign in
+                </button>
+                <span>
+                  already have an account ?
+                  <a routerLink="/login">Login</a></span
+                >
+              </div>
+              <!-- End Submit Form  -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- <div class="display-3">
+  {{signupForm.value|json}}
+</div> -->
+
+<!-- <input
+              [class.is-invalid]="signupForm.get('firstName')?.invalid == true  && signupForm.get('firstName')?.touched == true"
+              type="text" formControlName="firstName" class="form-control  w-100 form-control-lg"
+              placeholder="Enter your first name"> -->
+
+<!-- <input
+              [class.is-invalid]="signupForm.get('lastName')?.invalid == true  && signupForm.get('lastName')?.touched == true"
+              type="text" formControlName="lastName" class="form-control w-100 form-control-lg"
+              placeholder="Enter your last name"> -->
+<!-- <select formControlName="address" class="form-select" aria-label="address">
+            <option value="cairo">Cairo</option>
+            <option value="fayoum">Fayoum</option>
+            <option value="alex">Alex</option>
+      </select> -->
+
+<!-- 
+          <div id="clinc" *ngIf="signupForm.get('roleDoctor')?.value==true" class="mb-3 px-4 form-group">
+          <label class="form-label fs-4 fw-bolder">Clinic address</label>
+          <input
+            [class.is-invalid]="signupForm.get('clinicAddress')?.invalid == true  && signupForm.get('clinicAddress')?.touched == true"
+            type="text" formControlName="clinicAddress" class="form-control form-control-lg w-100"
+            placeholder="Enter your clinical address in details">
+          <span
+            *ngIf='signupForm.get("clinicAddress")?.invalid == true  && signupForm.get("clinicAddress")?.touched == true'
+            class="bgFont d-block text-danger">You should fill this field</span>
+        </div>
+        <div id="clinc" *ngIf="signupForm.get('roleDoctor')?.value==true" class="mb-3 px-4 form-group">
+          <label class="form-label fs-4 fw-bolder">Phone number</label>
+          <input
+            [class.is-invalid]="signupForm.get('phone')?.invalid == true  && signupForm.get('phone')?.touched == true"
+            type="text" formControlName="phone" class="form-control form-control-lg w-100"
+            placeholder="Enter your phone number">
+          <span
+            *ngIf='signupForm.get("phone")?.invalid == true  && signupForm.get("phone")?.touched == true'
+            class="bgFont d-block text-danger">You should fill this field</span>
+        </div>
+        -->
+
+<!-- <input href="#clinc" class="form-check-input fs-5" formControlName="roleDoctor" type="checkbox"
+            id="flexSwitchCheckChecked">
+          <label class="form-check-label fs-5" for="flexSwitchCheckChecked">Enable it if you are a doctor
+        </label> -->

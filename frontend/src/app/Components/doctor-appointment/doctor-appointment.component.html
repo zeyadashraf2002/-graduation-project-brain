@@ -1,0 +1,178 @@
+<!-- start doctorCard -->
+<div class="m-auto">
+  <mat-progress-spinner class="m-auto" mode="indeterminate" *ngIf="IsWait">
+  </mat-progress-spinner>
+</div>
+<div *ngIf="!IsWait" class="container">
+  <div class="row my-5 py-4">
+    <div class="col-md-12 text-center">
+      <h1 class="doctorJob fw-bolder text-center">Profile</h1>
+      <img
+        class="w-25 rounded-5"
+        [src]="profileDocData?.Image?.path"
+        alt="docProfile"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder">First Name</h4>
+      <span class="bg-light">
+        <p class="Pinfo">{{ profileDocData?.firstName }}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder">Last Name</h4>
+      <span class="bg-light">
+        <p class="Pinfo">{{ profileDocData?.lastName }}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder">E-mail</h4>
+      <span class="bg-light">
+        <p class="Pinfo">{{ profileDocData?.email }}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder">Address</h4>
+      <span class="bg-light">
+        <p class="Pinfo">{{ profileDocData?.address }}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder">Phone Number</h4>
+      <span class="bg-light">
+        <p class="Pinfo">{{ profileDocData?.phone }}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <h4 class="headColor fw-bolder">clinicAddress</h4>
+      <span class="bg-light">
+        <p class="Pinfo">{{ profileDocData?.clinicAddress }}</p>
+      </span>
+    </div>
+    <div class="col-md-6">
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Rate Your Doctor
+      </button>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <form [formGroup]="rateOfDoctor" (ngSubmit)="submit(rateOfDoctor)">
+        <div class="row">
+          <h1 class="display-5 headColor">Rating :</h1>
+          <div class="col-md-6">
+            <h2 class="headColor fw-bolder">Your Rate of five :</h2>
+            <!-- <mat-icon *ngFor="let icon of maxRatingArr ; let index=index "
+                            (mouseenter)="HandelMouseEnter(index)" (mouseleave)="HandelMouseLeave()"
+                            (start)="HandelEnter(index)" (click)="Rating(index)"
+                            [ngClass]="{checked:SelectedStar>index}">
+                            star</mat-icon> -->
+            <mat-form-field appearance="outline" class="w-50">
+              <mat-label>Choose Your rate </mat-label>
+              <mat-select formControlName="rate">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <h2 class="headColor fw-bolder fs-3">Add Your Notes :</h2>
+            <textarea
+              formControlName="text"
+              name=""
+              id=""
+              cols="45"
+              rows="5"
+            ></textarea>
+          </div>
+          <div>
+            {{ respOfRate }}
+          </div>
+        </div>
+
+        <div class="d-felx justify-content-end py-3">
+          <button type="submit" class="btn btn-success">Save your Rate</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="col-md-8  py-3">
+        <h1 class="fw-bolder">Dr.{{docProfileData?.firstName +' '+ docProfileData?.lastName}} </h1>
+        <h5><i class="fa fa-map-marker py-2 "></i> {{docProfileData?.address}}</h5>
+        <p class="doctorJob"> {{docProfileData?.email}}</p>
+        <p class="doctorJob"> {{docProfileData?.phone}}</p>
+        
+
+    </div> -->
+</div>
+<!-- <div class="container">
+    <div *ngIf="IsWait">
+        <mat-progress-spinner class="m-auto" mode="indeterminate" >
+        </mat-progress-spinner>
+    </div>
+    <div  *ngIf="!IsWait" class="row my-5 py-4">
+        
+        <div class="col-md-3 ">
+            <img class="w-100 " [src]="profileDocData?.Image?.path" alt="docProfile">
+        </div>
+        <div class="col-md-9  py-3">
+            <h1 class="fw-bolder">DR . {{profileDocData?.firstName+' '+profileDocData?.lastName}}</h1> 
+            <h4  class="fw-bolder"> Clinical address: <p class="doctorJob">{{profileDocData?.clinicAddress}}</p></h4>
+            <h5><i class="fa fa-map-marker py-2 "></i> {{profileDocData?.address}}</h5>  
+            <h4 class="fw-bolder">Phone Number : <p class="doctorJob"> {{profileDocData?.phone}}</p> </h4>
+            <h4 class="fw-bolder"><p class="doctorJob">{{profileDocData.phone}}</p></h4>
+        </div>
+    </div>
+</div> -->
+<!-- end doctorCard -->
+
+<!-- start doctorAppointments -->
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <h3 class="av-appoint py-5">
+        <i class="fa fa-calendar"></i> Available appointments
+      </h3>
+    </div>
+    <div *ngIf="IsWait">
+      <mat-progress-spinner class="m-auto" mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+
+    <div *ngFor="let app of appDocData; let i = index" class="col-md-3">
+      <div *ngIf="!IsWait" class="book-card text-center py-2 m-3">
+        <!-- <p> {{i+1}}</p> -->
+        <h3 class="card-head">{{ app }}</h3>
+        <!-- <h4 class="p-3">
+          <i class="fa fa-clock-o py-2 fs-4 fw-bolder"></i> {{ app.startTime }}
+        </h4> -->
+        <p
+          *ngIf="profileDocData.appointments[i] === app"
+          class="text-center fs-4 text-danger"
+        >
+          Already Booked
+        </p>
+        <button
+          #bok
+          (click)="book(app)"
+          class="book-btn m-3 p-3"
+          type="button"
+          [value]="app?._id"
+        >
+          Book
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end doctorAppointments -->
